@@ -76,10 +76,6 @@ namespace Recurly.Errors {
           return new Validation(err.Message) {
             Error = err
           };
-        case "missing_feature":
-          return new MissingFeature(err.Message) {
-            Error = err
-          };
         default:
           throw new ArgumentException($"{err.Type} has no valid exception class");
       }
@@ -176,11 +172,5 @@ namespace Recurly.Errors {
     public Validation() {}
     public Validation(string message) : base(message) {}
     public Validation(string message, Exception inner) : base(message, inner) {}
-  }
-  public class MissingFeature : ApiError
-  {
-    public MissingFeature() {}
-    public MissingFeature(string message) : base(message) {}
-    public MissingFeature(string message, Exception inner) : base(message, inner) {}
   }
 }
